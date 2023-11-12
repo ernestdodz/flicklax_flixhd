@@ -38,7 +38,7 @@ BASE URL = https://flicklax-flixhd.vercel.app
 #### Get HLS Stream
 
 ```
-  GET /api/source/:id
+  GET /api/streaming/:id
 ```
 
 
