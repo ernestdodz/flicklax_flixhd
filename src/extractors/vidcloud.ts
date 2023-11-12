@@ -27,17 +27,21 @@ class VidCloud extends VideoExtractor {
             const res = await axios.get(`${videoUrl.protocol}//${videoUrl.hostname}/ajax/embed-4/getSources?id=${id}`, options);
 
             if (!isJson(res.data.sources)) {
-                const key = await (await axios.get('https://e4.tvembed.cc/e4')).data;
+                const key = await (await axios.get('https://raw.githubusercontent.com/Claudemirovsky/keys/e4/key')).data;
 
                 const sourcesArray = res.data.sources.split("");
 
                 let extractedKey = "";
 
+                let currentIndex = 0;
                 for (const index of key) {
-                    for (let i = index[0]; i < index[1]; i++) {
+                    const start = index[0] + currentIndex;
+                    const end = start + index[1];
+                    for (let i = start; i < end; i++) {
                         extractedKey += res.data.sources[i];
-                        sourcesArray[i] = "";
+                        sourcesArray[i] = '';
                     }
+                    currentIndex += index[1];
                 }
 
                 res.data.sources = sourcesArray.join("");
