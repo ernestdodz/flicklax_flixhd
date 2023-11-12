@@ -22,7 +22,7 @@ Start the server
 
 ## API Reference
 
-BASE URL = https://flixhd-api-123.vercel.app
+BASE URL = https://flicklax-flixhd.vercel.app
 #### Get tmdb details
 
 ```
